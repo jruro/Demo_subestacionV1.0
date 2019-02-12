@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- These are the arguments you can pass this launch file, for example paused:=true -->
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="robot_namespace" default="/"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+
+  <!-- Edit the name of the world file (example_underwater.world) when using this template -->
+    <arg name="world_name" value="worlds/empty_sky.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+
+  </include>
+
+    <!--<param name="husky_description" command="$(find xacro)/xacro $(find husky_sdf_description)/HUSKY/rover.sdf"/>
+
+    <node name="husk_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model robot_husky -param husky_description -x 0 -y -70 -z 0.2 -R 0 -P 0 -Y 1.57"/>-->
+
+    <param name="grass_plane" command="$(find xacro)/xacro /home/juan/.gazebo/models/grass_plane/model.sdf"/>
+
+    <node name="grass_plane" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model grass_plane -param grass_plane -x -80 -y -80 -z 0.01 -R 0 -P 0 -Y 0"/>
+
+    <param name="grass_plane2" command="$(find xacro)/xacro /home/juan/.gazebo/models/grass_plane/model.sdf"/>
+
+    <node name="grass_plane2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model grass_plane2 -param grass_plane2 -x -20 -y 40 -z 0.01 -R 0 -P 0 -Y 3.14"/>
+
+    <param name="asphalt_description" command="$(find xacro)/xacro /home/juan/.gazebo/models/asphalt_plane/model.sdf"/>
+
+    <node name="asphalt_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model asphalt -param asphalt_description -x 0 -y 0 -z 0.01 -R 0 -P 0 -Y 0"/>
+
+    <param name="asphalt_2_description" command="$(find xacro)/xacro /home/juan/.gazebo/models/asphalt_plane_2/model.sdf"/>
+
+    <node name="asphalt_2_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model asphalt_2 -param asphalt_2_description -x -20 -y -40 -z 0.01 -R 0 -P 0 -Y 0"/>
+
+    <param name="asphalt_3_description" command="$(find xacro)/xacro /home/juan/.gazebo/models/asphalt_plane_2/model.sdf"/>
+
+    <node name="asphalt_3_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model asphalt_3 -param asphalt_3_description -x 20 -y -40 -z 0.01 -R 0 -P 0 -Y 0"/>
+
+    <param name="asphalt_4_description" command="$(find xacro)/xacro /home/juan/.gazebo/models/asphalt_plane_2/model.sdf"/>
+
+    <node name="asphalt_4_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model asphalt_4 -param asphalt_4_description -x -20 -y 40 -z 0.01 -R 0 -P 0 -Y 0"/>
+
+    <param name="asphalt_5_description" command="$(find xacro)/xacro /home/juan/.gazebo/models/asphalt_plane_2/model.sdf"/>
+
+    <node name="asphalt_5_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model asphalt_5 -param asphalt_5_description -x 20 -y 40 -z 0.01 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2005_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2005/model.sdf"/>
+
+    <node name="FGAG2005_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_trafo_tension_1 -param FGAG2005_1 -x -6.67 -y -67 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2005_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2005/model.sdf"/>
+
+    <node name="FGAG2005_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_trafo_tension_2 -param FGAG2005_2 -x 0 -y -67 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2005_3" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2005/model.sdf"/>
+
+    <node name="FGAG2005_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_trafo_tension_3 -param FGAG2005_3 -x 6.67 -y -67 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2002_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2002/model.sdf"/>
+
+    <node name="FGAG2002_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_A_1 -param FGAG2002_1 -x -6.77 -y -63.75 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2002_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2002/model.sdf"/>
+
+    <node name="FGAG2002_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_A_2 -param FGAG2002_2 -x 0 -y -63.75 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2002_3" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2002/model.sdf"/>
+
+    <node name="FGAG2002_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_A_3 -param FGAG2002_3 -x 6.77 -y -63.75 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2002_1_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2002-1/model.sdf"/>
+
+    <node name="FGAG2002_1_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_B_1 -param FGAG2002_1_1 -x -6.87 -y -60.5 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2002_1_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2002-1/model.sdf"/>
+
+    <node name="FGAG2002_1_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_B_2 -param FGAG2002_1_2 -x 0 -y -60.5 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2002_1_3" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2002-1/model.sdf"/>
+
+    <node name="FGAG2002_1_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_B_3 -param FGAG2002_1_3 -x 6.87 -y -60.5 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2003_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2003/model.sdf"/>
+
+    <node name="FGAG2003_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_tri_1 -param FGAG2003_1 -x -6.67 -y -52.75 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2003_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2003/model.sdf"/>
+
+    <node name="FGAG2003_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_tri_2 -param FGAG2003_2 -x 0 -y -47.75 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2003_3" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2003/model.sdf"/>
+
+    <node name="FGAG2003_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_sec_tri_3 -param FGAG2003_3 -x 6.67 -y -42.75 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2004_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2004/model.sdf"/>
+
+    <node name="FGAG2004_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_trafo_int_1 -param FGAG2004_1 -x -6.67 -y -38.25 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2004_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2004/model.sdf"/>
+
+    <node name="FGAG2004_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_trafo_int_2 -param FGAG2004_2 -x 0 -y -38.25 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2004_3" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2004/model.sdf"/>
+
+    <node name="FGAG2004_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_trafo_int_3 -param FGAG2004_3 -x 6.67 -y -38.25 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2009" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2009/model.sdf"/>
+
+    <node name="FGAG2009" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_aisl -param FGAG2009 -x -6.67 -y -42.75 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2000_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2000/model.sdf"/>
+
+    <node name="FGAG2000_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_polo_int_1 -param FGAG2000_1 -x -6.67 -y -30.25 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2000_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2000/model.sdf"/>
+
+    <node name="FGAG2000_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_polo_int_2 -param FGAG2000_2 -x 0 -y -30.25 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG2000_3" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG2000/model.sdf"/>
+
+    <node name="FGAG2000_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model soporte_polo_int_3 -param FGAG2000_3 -x 6.67 -y -30.25 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_s_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_SOPORTE/model.sdf"/>
+
+    <node name="FGAG1002_s_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_soporte_1 -param FGAG1002_s_1 -x 17 -y -44 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_s_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_SOPORTE/model.sdf"/>
+
+    <node name="FGAG1002_s_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_soporte_2 -param FGAG1002_s_2 -x 17 -y -43 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_c1_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_COLUMNA1/model.sdf"/>
+
+    <node name="FGAG1002_c1_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_c1_1 -param FGAG1002_c1_1 -x 24 -y -44 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_c1_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_COLUMNA1/model.sdf"/>
+
+    <node name="FGAG1002_c1_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_c1_2 -param FGAG1002_c1_2 -x 24 -y -42 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_c2_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_COLUMNA2/model.sdf"/>
+
+    <node name="FGAG1002_c2_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_c2_1 -param FGAG1002_c2_1 -x 22 -y -40 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_c2_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_COLUMNA2/model.sdf"/>
+
+    <node name="FGAG1002_c2_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_c2_2 -param FGAG1002_c2_2 -x 22 -y -41 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_c3_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_COLUMNA3/model.sdf"/>
+
+    <node name="FGAG1002_c3_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_c3_1 -param FGAG1002_c3_1 -x 19 -y -40 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1002_c3_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1002_COLUMNA3/model.sdf"/>
+
+    <node name="FGAG1002_c3_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_vert_c3_2 -param FGAG1002_c3_2 -x 19 -y -41 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="tower_crane" command="$(find xacro)/xacro /home/juan/.gazebo/models/tower_crane/model.sdf"/>
+
+    <node name="tower_crane" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model tower_crane -param tower_crane -x 18 -y -40 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <!--<param name="FGAG1003_v1_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1003_VIGA_1/model.sdf"/>
+
+    <node name="FGAG1003_v1_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_hor_v1_1 -param FGAG1003_v1_1 -x -16 -y -44 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1003_v1_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1003_VIGA_1/model.sdf"/>
+
+    <node name="FGAG1003_v1_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_hor_v1_2 -param FGAG1003_v1_2 -x -17 -y -44 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1003_v1_3" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1003_VIGA_1/model.sdf"/>
+
+    <node name="FGAG1003_v1_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_hor_v1_3 -param FGAG1003_v1_3 -x -18 -y -44 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1003_v1_4" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1003_VIGA_1/model.sdf"/>
+
+    <node name="FGAG1003_v1_4" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_hor_v1_4 -param FGAG1003_v1_4 -x -19 -y -44 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1003_v2_1" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1003_VIGA_2/model.sdf"/>
+
+    <node name="FGAG1003_v2_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_hor_v2_1 -param FGAG1003_v2_1 -x -17 -y -42.5 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="FGAG1003_v2_2" command="$(find xacro)/xacro /home/juan/.gazebo/models/FGAG1003_VIGA_2/model.sdf"/>
+
+    <node name="FGAG1003_v2_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model portico_ppal_hor_v2_2 -param FGAG1003_v2_1 -x -18 -y -42.5 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="asphalt_6_description" command="$(find xacro)/xacro $(find husky_sdf_description)/HUSKY/model_asphalt_2.sdf"/>
+
+    <node name="asphalt_6_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model asphalt_6 -param asphalt_6_description -x -20 -y 0 -z 0.02 -R 0 -P 0 -Y 0"/>
+
+    <param name="asphalt_7_description" command="$(find xacro)/xacro $(find husky_sdf_description)/HUSKY/model_asphalt_2.sdf"/>
+
+    <node name="asphalt_7_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model asphalt_7 -param asphalt_7_description -x 20 -y 0 -z 0.02 -R 0 -P 0 -Y 0"/>-->
+
+</launch>
