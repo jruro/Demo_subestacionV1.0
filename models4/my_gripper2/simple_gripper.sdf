@@ -1,0 +1,688 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+    <model name="simple_gripper">
+
+      <static>false</static>
+
+      <link name='chassis_2'>
+            <pose>0 0 0.05 0 0 0</pose>
+            <inertial>
+              <mass>10.0</mass>
+              <inertia>
+                <ixx>1</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>10000</iyy>
+                <iyz>0</iyz>
+                <izz>1</izz>
+              </inertia>
+            </inertial>
+            <collision name='collision'>
+              <geometry>
+                <box>
+                  <size>0.5 0.4 0.05</size>
+                </box>
+              </geometry>
+            </collision>
+
+            <visual name='visual'>
+              <geometry>
+                <box>
+                  <size>0.5 0.4 0.05</size>
+                </box>
+              </geometry>
+              <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Black</name>
+              </script>
+            </material>
+            </visual>
+  </link>
+
+<link name="soporte_1">
+        <pose>0 0 0.175 0 0 0</pose>
+        <inertial>
+          <mass>10.0</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>10000</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+            <collision name='collision'>
+              <geometry>
+                <box>
+                  <size>0.2 0.2 0.2</size>
+                </box>
+              </geometry>
+            </collision>
+
+            <visual name='visual'>
+              <geometry>
+                <box>
+                  <size>0.2 0.2 0.2</size>
+                </box>
+              </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+            </material>
+            </visual>
+ </link>
+
+ <link name="soporte_2">
+         <pose>0 0 0.31 0 0 0</pose>
+         <inertial>
+           <mass>1.0</mass>
+         </inertial>
+             <collision name='collision'>
+               <geometry>
+                 <box>
+                   <size>0.05 0.05 0.1</size>
+                 </box>
+               </geometry>
+             </collision>
+
+             <visual name='visual'>
+               <geometry>
+                 <box>
+                   <size>0.05 0.05 0.1</size>
+                 </box>
+               </geometry>
+             <material>
+               <script>
+                 <uri>file://media/materials/scripts/gazebo.material</uri>
+                 <name>Gazebo/Grey</name>
+               </script>
+             </material>
+             </visual>
+  </link>
+
+ <link name="cilindro_soporte">
+         <pose>0 0 0.4 0 1.5707 1.5707</pose>
+         <inertial>
+           <mass>1.0</mass>
+         </inertial>
+             <collision name='collision'>
+               <geometry>
+                  <cylinder>
+                    <radius>.05</radius>
+                    <length>.15</length>
+                  </cylinder>
+               </geometry>
+             </collision>
+
+             <visual name='visual'>
+               <geometry>
+                  <cylinder>
+                    <radius>.05</radius>
+                    <length>.15</length>
+                  </cylinder>
+               </geometry>
+             <material>
+               <script>
+                 <uri>file://media/materials/scripts/gazebo.material</uri>
+                 <name>Gazebo/Black</name>
+               </script>
+             </material>
+             </visual>
+  </link>
+
+<link name="viga_1">
+        <pose>0.30 0 0.6 0 1 0</pose>
+        <inertial>
+          <mass>1.0</mass>
+        </inertial>
+            <collision name='collision'>
+              <geometry>
+                <box>
+                  <size>0.1 0.1 0.7</size>
+                </box>
+              </geometry>
+            </collision>
+
+            <visual name='visual'>
+              <geometry>
+                <box>
+                  <size>0.1 0.1 0.7</size>
+                </box>
+              </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+            </material>
+            </visual>
+ </link>
+
+ <link name="viga_2">
+         <pose>0.55 0 0.76 0 1 0</pose>
+         <inertial>
+           <mass>1.0</mass>
+         </inertial>
+             <collision name='collision'>
+               <geometry>
+                 <box>
+                   <size>0.07 0.07 0.7</size>
+                 </box>
+               </geometry>
+             </collision>
+
+             <visual name='visual'>
+               <geometry>
+                 <box>
+                   <size>0.07 0.07 0.7</size>
+                 </box>
+               </geometry>
+             <material>
+               <script>
+                 <uri>file://media/materials/scripts/gazebo.material</uri>
+                 <name>Gazebo/Grey</name>
+               </script>
+             </material>
+             </visual>
+  </link>
+
+  <link name="anclaje_1">
+          <pose>0.4 0 0.585 0 2.58 0</pose>
+          <inertial>
+            <mass>1.0</mass>
+          </inertial>
+              <collision name='collision'>
+                <geometry>
+                  <box>
+                    <size>0.07 0.07 0.04</size>
+                  </box>
+                </geometry>
+              </collision>
+
+              <visual name='visual'>
+                <geometry>
+                  <box>
+                    <size>0.07 0.07 0.04</size>
+                  </box>
+                </geometry>
+              <material>
+                <script>
+                  <uri>file://media/materials/scripts/gazebo.material</uri>
+                  <name>Gazebo/Grey</name>
+                </script>
+              </material>
+              </visual>
+   </link>
+
+   <link name="anclaje_2">
+           <pose>0.12 0 0.17 0 1.5707 0</pose>
+           <inertial>
+             <mass>1.0</mass>
+             <inertia>
+               <ixx>1</ixx>
+               <ixy>0</ixy>
+               <ixz>0</ixz>
+               <iyy>1</iyy>
+               <iyz>0</iyz>
+               <izz>1</izz>
+             </inertia>
+           </inertial>
+               <collision name='collison'>
+                 <geometry>
+                   <box>
+                     <size>0.05 0.05 0.1</size>
+                   </box>
+                 </geometry>
+               </collision>
+
+               <visual name='visual'>
+                 <geometry>
+                   <box>
+                     <size>0.05 0.05 0.1</size>
+                   </box>
+                 </geometry>
+               <material>
+                 <script>
+                   <uri>file://media/materials/scripts/gazebo.material</uri>
+                   <name>Gazebo/Grey</name>
+                 </script>
+               </material>
+               </visual>
+    </link>
+
+    <link name="viga_3">
+            <pose>0.25 0 0.28 0 0.62 0</pose>
+            <inertial>
+              <mass>1.0</mass>
+            </inertial>
+                <collision name='collision'>
+                  <geometry>
+                    <box>
+                      <size>0.05 0.05 0.21</size>
+                    </box>
+                  </geometry>
+                </collision>
+
+                <visual name='visual'>
+                  <geometry>
+                    <box>
+                      <size>0.05 0.05 0.21</size>
+                    </box>
+                  </geometry>
+                <material>
+                  <script>
+                    <uri>file://media/materials/scripts/gazebo.material</uri>
+                    <name>Gazebo/Grey</name>
+                  </script>
+                </material>
+                </visual>
+     </link>
+
+     <link name="viga_4">
+             <pose>0.36 0 0.435 0 0.62 0</pose>
+             <inertial>
+               <mass>1.0</mass>
+             </inertial>
+                 <collision name='collision'>
+                   <geometry>
+                     <box>
+                       <size>0.03 0.03 0.25</size>
+                     </box>
+                   </geometry>
+                 </collision>
+
+                 <visual name='visual'>
+                   <geometry>
+                     <box>
+                       <size>0.03 0.03 0.25</size>
+                     </box>
+                   </geometry>
+                 <material>
+                   <script>
+                     <uri>file://media/materials/scripts/gazebo.material</uri>
+                     <name>Gazebo/Grey</name>
+                   </script>
+                 </material>
+                 </visual>
+      </link>
+
+<link name="plataforma">
+        <pose>0.87 0 1.1 0 0 0</pose>
+        <inertial>
+          <mass>1.0</mass>
+        </inertial>
+            <collision name='collision'>
+              <geometry>
+                <box>
+                  <size>0.3 1.0 0.1</size>
+                </box>
+              </geometry>
+            </collision>
+
+            <visual name='visual'>
+              <geometry>
+                <box>
+                  <size>0.3 1.0 0.1</size>
+                </box>
+              </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+            </material>
+            </visual>
+ </link>
+
+ <link name="plataforma_2">
+         <pose>0.87 0.4 1.20 0 0 0</pose>
+         <inertial>
+           <mass>1.0</mass>
+         </inertial>
+             <collision name='collision'>
+               <geometry>
+                 <box>
+                   <size>0.3 0.2 0.15</size>
+                 </box>
+               </geometry>
+             </collision>
+
+             <visual name='visual'>
+               <geometry>
+                 <box>
+                   <size>0.3 0.2 0.15</size>
+                 </box>
+               </geometry>
+             <material>
+               <script>
+                 <uri>file://media/materials/scripts/gazebo.material</uri>
+                 <name>Gazebo/Grey</name>
+               </script>
+             </material>
+             </visual>
+  </link>
+
+  <link name="plataforma_3">
+          <pose>0.87 -0.4 1.20 0 0 0</pose>
+          <inertial>
+            <mass>1.0</mass>
+          </inertial>
+              <collision name='collision'>
+                <geometry>
+                  <box>
+                    <size>0.3 0.2 0.15</size>
+                  </box>
+                </geometry>
+              </collision>
+
+              <visual name='visual'>
+                <geometry>
+                  <box>
+                    <size>0.3 0.2 0.15</size>
+                  </box>
+                </geometry>
+              <material>
+                <script>
+                  <uri>file://media/materials/scripts/gazebo.material</uri>
+                  <name>Gazebo/Grey</name>
+                </script>
+              </material>
+              </visual>
+   </link>
+
+ <link name="cilindro_plataforma">
+        <pose>0.87 0 0.97 0 1.5707 1.5707</pose>
+        <inertial>
+          <mass>1.0</mass>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.05</radius>
+              <length>.10</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>.05</radius>
+              <length>.10</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+
+      <link name="cilindro_anclaje_1">
+             <pose>0.42 0 0.548 0 1.5707 1.5707</pose>
+             <inertial>
+               <mass>1.0</mass>
+             </inertial>
+             <collision name="collision">
+               <geometry>
+                 <cylinder>
+                   <radius>.04</radius>
+                   <length>.06</length>
+                 </cylinder>
+               </geometry>
+             </collision>
+             <visual name="visual">
+               <geometry>
+                 <cylinder>
+                   <radius>.04</radius>
+                   <length>.06</length>
+                 </cylinder>
+               </geometry>
+               <material>
+                 <script>
+                   <uri>file://media/materials/scripts/gazebo.material</uri>
+                   <name>Gazebo/Black</name>
+                 </script>
+               </material>
+             </visual>
+           </link>
+
+           <link name="cilindro_anclaje_2">
+                  <pose>0.18 0 0.177 0 1.5707 1.5707</pose>
+                  <inertial>
+                    <mass>1.0</mass>
+                  </inertial>
+                  <collision name="collision">
+                    <geometry>
+                      <cylinder>
+                        <radius>.04</radius>
+                        <length>.04</length>
+                      </cylinder>
+                    </geometry>
+                  </collision>
+                  <visual name="visual">
+                    <geometry>
+                      <cylinder>
+                        <radius>.04</radius>
+                        <length>.04</length>
+                      </cylinder>
+                    </geometry>
+                    <material>
+                      <script>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                        <name>Gazebo/Black</name>
+                      </script>
+                    </material>
+                  </visual>
+                </link>
+
+      <link name="cilindro_pequeno_eje_z">
+             <pose>0.87 0 1.04 0 0 0</pose>
+             <inertial>
+               <mass>1.0</mass>
+             </inertial>
+             <collision name="collision">
+               <geometry>
+                 <cylinder>
+                   <radius>.02</radius>
+                   <length>.08</length>
+                 </cylinder>
+               </geometry>
+             </collision>
+             <visual name="visual">
+               <geometry>
+                 <cylinder>
+                   <radius>.02</radius>
+                   <length>.08</length>
+                 </cylinder>
+               </geometry>
+               <material>
+                 <script>
+                   <uri>file://media/materials/scripts/gazebo.material</uri>
+                   <name>Gazebo/Grey</name>
+                 </script>
+               </material>
+             </visual>
+           </link>
+
+      <joint type="revolute" name="art_eje_y">
+        <pose>0 0 -0.33 0 0 0</pose>
+        <child>viga_1</child>
+        <parent>cilindro_soporte</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+        </axis>
+      </joint>
+
+      <joint type="revolute" name="art_ancl_1_eje_y">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_anclaje_2</child>
+        <parent>anclaje_2</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+        </axis>
+      </joint>
+
+      <joint type="revolute" name="art_ancl_2_eje_y">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_anclaje_1</child>
+        <parent>anclaje_1</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+        </axis>
+      </joint>
+
+    <!--  <joint type="revolute" name="art_plat_eje_y">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_plataforma</child>
+        <parent>viga_2</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+        </axis>
+      </joint>
+
+      <joint type="revolute" name="art_plat_eje_z">
+        <pose>0 0 -0.1 0 0 0</pose>
+        <child>plataforma</child>
+        <parent>cilindro_pequeno_eje_z</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+      </joint>
+
+      <joint type="revolute" name="art_eje_z">
+        <pose>0 0 0 0 0 0</pose>
+        <child>soporte_1</child>
+        <parent>chassis_2</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+      </joint>-->
+
+      <joint type="fixed" name="art_cil_sop_fija">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_soporte</child>
+        <parent>soporte_1</parent>
+      </joint>
+
+      <joint type="fixed" name="art_cil_cil_peq">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_plataforma</child>
+        <parent>cilindro_pequeno_eje_z</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_pequeno_eje_z</child>
+        <parent>cilindro_plataforma</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_1">
+        <pose>0 0 0 0 0 0</pose>
+        <child>plataforma_2</child>
+        <parent>plataforma</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_2">
+        <pose>0 0 0 0 0 0</pose>
+        <child>plataforma_3</child>
+        <parent>plataforma</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_7">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_soporte</child>
+        <parent>soporte_2</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_8">
+        <pose>0 0 0 0 0 0</pose>
+        <child>soporte_1</child>
+        <parent>soporte_2</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_9">
+        <pose>0 0 0 0 0 0</pose>
+        <child>anclaje_1</child>
+        <parent>viga_1</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_10">
+        <pose>0 0 0 0 0 0</pose>
+        <child>anclaje_2</child>
+        <parent>soporte_1</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_11">
+        <pose>0 0 0 0 0 0</pose>
+        <child>viga_4</child>
+        <parent>cilindro_anclaje_1</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_12">
+        <pose>0 0 0 0 0 0</pose>
+        <child>viga_3</child>
+        <parent>cilindro_anclaje_2</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_14">
+        <pose>0 0 0 0 0 0</pose>
+        <child>cilindro_plataforma</child>
+        <parent>viga_2</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_15">
+        <pose>0 0 0 0 0 0</pose>
+        <child>plataforma</child>
+        <parent>cilindro_pequeno_eje_z</parent>
+      </joint>
+
+      <joint type="fixed" name="art_fija_16">
+        <pose>0 0 0 0 0 0</pose>
+        <child>soporte_1</child>
+        <parent>chassis_2</parent>
+      </joint>
+
+      <joint name="art_lineal_up" type="prismatic">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>viga_1</parent>
+        <child>viga_2</child>
+        <axis>
+          <dynamics>
+            <damping>1.000000</damping>
+            <friction>0.000000</friction>
+          </dynamics>
+          <limit>
+            <lower>-0.55</lower>
+            <upper>0.4</upper>
+          </limit>
+          <xyz>1.6 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>
+
+      <joint name="art_lineal_dw" type="prismatic">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>viga_3</parent>
+        <child>viga_4</child>
+        <axis>
+          <dynamics>
+            <damping>1.000000</damping>
+            <friction>0.000000</friction>
+          </dynamics>
+          <limit>
+            <lower>-0.25</lower>
+            <upper>0</upper>
+          </limit>
+          <xyz>0.62 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>
+
+    </model>
+</sdf>

@@ -1,0 +1,894 @@
+<?xml version="1.0"?>
+<sdf version='1.6'>
+  <model name='kraftgripper'>
+
+    <link name='base_link'>
+      <pose>0 0 0.001 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.00762 0 -0 0</pose>
+        <mass>1.208</mass>
+        <inertia>
+          <ixx>0.00474213</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00474213</iyy>
+          <iyz>0</iyz>
+          <izz>0.0094375</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='base_link_collision'>
+        <pose>0 0 0.00762 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.01524</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/base.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <!--<joint name='anchor' type='fixed'>
+      <child>base_link</child>
+      <parent>world</parent>
+    </joint>-->
+
+    <link name='manifold'>
+      <pose>0 0 0.01624 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.16906 0 -0 0</pose>
+        <mass>41.111</mass>
+        <inertia>
+          <ixx>0.823591</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.823591</iyy>
+          <iyz>0</iyz>
+          <izz>0.863845</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='manifold_collision'>
+        <pose>0 0 0.16906 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.33812</length>
+            <radius>0.205</radius>
+          </cylinder>
+        </geometry>
+
+      </collision>
+      <visual name='manifold_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/manifold.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='SA' type='revolute'>
+      <child>manifold</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
+          <effort>400</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='upper_arm'>
+      <pose>0 0 0.35436 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.260835 0 -0 0</pose>
+        <mass>3.592</mass>
+        <inertia>
+          <ixx>0.0865117</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0865117</iyy>
+          <iyz>0</iyz>
+          <izz>0.0101025</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='upper_arm_collision'>
+        <pose>0 0 0.260835 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.52167</length>
+            <radius>0.075</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='upper_arm_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/upper_arm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='SE' type='revolute'>
+      <child>upper_arm</child>
+      <parent>manifold</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>0.523599</upper>
+          <effort>400</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+          <friction>10</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='forearm'>
+      <pose>0 -0.00982 0.87603 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.069139 0 0 -0 0</pose>
+        <mass>4.935</mass>
+        <inertia>
+          <ixx>0.0679221</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0138797</iyy>
+          <iyz>0</iyz>
+          <izz>0.0679221</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='forearm_collision'>
+        <pose>0 0.069139 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.385078</length>
+            <radius>0.075</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='forearm_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/forearm.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='linkage_tr' type='revolute'>
+      <child>forearm</child>
+      <parent>upper_arm</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.698132</lower>
+          <upper>1.22173</upper>
+          <effort>400</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>10</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='pitch'>
+      <pose>0 0.25127 0.88353 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.066612 0 0 -0 0</pose>
+        <mass>0.679</mass>
+        <inertia>
+          <ixx>0.00195911</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00190969</iyy>
+          <iyz>0</iyz>
+          <izz>0.00195911</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='pitch_collision'>
+        <pose>0 0.066612 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.133223</length>
+            <radius>0.075</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='pitch_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/pitch.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='WP' type='revolute'>
+      <child>pitch</child>
+      <parent>forearm</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.610865</lower>
+          <upper>1.13446</upper>
+          <effort>400</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='yaw'>
+      <pose>0 0.384493 0.88353 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.095446 0 0 -0 0</pose>
+        <mass>4.689</mass>
+        <inertia>
+          <ixx>0.0227083</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.016939</iyy>
+          <iyz>0</iyz>
+          <izz>0.0227083</izz>
+        </inertia>
+      </inertial>
+      <collision name='yaw_collision'>
+        <pose>0 0.095446 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.190892</length>
+            <radius>0.085</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='yaw_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/yaw.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='WY' type='revolute'>
+      <child>yaw</child>
+      <parent>pitch</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.680678</lower>
+          <upper>1.15192</upper>
+          <effort>400</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>5</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='end_effector'>
+      <pose>-0.000787 0.575385 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.02493 0.000514 0 -0 0</pose>
+        <mass>0.973</mass>
+        <inertia>
+          <ixx>0.00100742</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00200766</iyy>
+          <iyz>1.24648e-05</iyz>
+          <izz>0.00203526</izz>
+        </inertia>
+      </inertial>
+      <collision name='end_effector_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01</radius>
+          </sphere>
+        </geometry>
+      </collision>
+
+      <collision name='end_effector_fixed_joint_lump__collision_collision_1'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/gripper_base_c.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='end_effector_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01</radius>
+          </sphere>
+        </geometry>
+      </visual>
+
+      <visual name='end_effector_fixed_joint_lump__gripper_base_visual_1'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/gripper_base.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='WR' type='revolute'>
+      <child>end_effector</child>
+      <parent>yaw</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.74533</lower>
+          <upper>1.74533</upper>
+          <effort>400</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.5</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='l_inner'>
+      <pose>-0.032524 0.617575 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>0.000316 0.023873 0 0 -0 0</pose>
+        <mass>0.194</mass>
+        <inertia>
+          <ixx>0.0001179</ixx>
+          <ixy>-1.347e-06</ixy>
+          <ixz>0</ixz>
+          <iyy>5.647e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.353e-05</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='l_inner_fixed_joint_lump__collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/l_inner_pivot_c.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='l_inner_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/l_inner_pivot.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='l_inner' type='revolute'>
+      <child>l_inner</child>
+      <parent>end_effector</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.4</lower>
+          <upper>1.43</upper>
+          <effort>200</effort>
+          <velocity>15</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+
+    <link name='l_finger'>
+      <pose>-0.032524 0.681025 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>-0.003441 0.020353 0 0 -0 0</pose>
+        <mass>0.174</mass>
+        <inertia>
+          <ixx>0.000165</ixx>
+          <ixy>-3.16e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>3.595e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001701</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='l_finger_fixed_joint_lump__collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/l_finger_c.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='l_finger_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/l_finger.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='l_finger' type='revolute'>
+      <child>l_finger</child>
+      <parent>l_inner</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
+          <effort>200</effort>
+          <velocity>15</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+
+    <link name='l_outer'>
+      <pose>-0.059717 0.601875 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.031725 0 0 -0 0</pose>
+        <mass>0.091</mass>
+        <inertia>
+          <ixx>4.664e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.519e-06</iyy>
+          <iyz>0</iyz>
+          <izz>4.682e-05</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='l_outer_fixed_joint_lump__collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/outer_pivot_c.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='l_outer_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/outer_pivot.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='l_outer' type='revolute'>
+      <child>l_outer</child>
+      <parent>end_effector</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.4</lower>
+          <upper>1.43</upper>
+          <effort>200</effort>
+          <velocity>15</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+
+    <link name='r_inner'>
+      <pose>0.03095 0.617575 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>-0.000316 0.023873 0 0 -0 0</pose>
+        <mass>0.194</mass>
+        <inertia>
+          <ixx>0.0001179</ixx>
+          <ixy>1.347e-06</ixy>
+          <ixz>0</ixz>
+          <iyy>5.647e-05</iyy>
+          <iyz>0</iyz>
+          <izz>7.353e-05</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='r_inner_fixed_joint_lump__collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/r_inner_pivot_c.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='r_inner_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/r_inner_pivot.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='r_inner' type='revolute'>
+      <child>r_inner</child>
+      <parent>end_effector</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.43</lower>
+          <upper>0.4</upper>
+          <effort>200</effort>
+          <velocity>15</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+
+    <link name='r_finger'>
+      <pose>0.03095 0.681025 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>0.003441 0.020353 0 0 -0 0</pose>
+        <mass>0.174</mass>
+        <inertia>
+          <ixx>0.000165</ixx>
+          <ixy>3.16e-05</ixy>
+          <ixz>0</ixz>
+          <iyy>3.595e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001701</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='r_finger_fixed_joint_lump__collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/r_finger_c.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='r_finger_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/r_finger.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='r_finger' type='revolute'>
+      <child>r_finger</child>
+      <parent>r_inner</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
+          <effort>200</effort>
+          <velocity>15</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+
+    <link name='r_outer'>
+      <pose>0.058143 0.601875 0.934861 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.031725 0 0 -0 0</pose>
+        <mass>0.091</mass>
+        <inertia>
+          <ixx>4.664e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.519e-06</iyy>
+          <iyz>0</iyz>
+          <izz>4.682e-05</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='r_outer_fixed_joint_lump__collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/outer_pivot_c.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='r_outer_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://kraftgripper/meshes/outer_pivot.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Telerobcar/MetalSeamed</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name='r_outer' type='revolute'>
+      <child>r_outer</child>
+      <parent>end_effector</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.43</lower>
+          <upper>0.4</upper>
+          <effort>200</effort>
+          <velocity>15</velocity>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+
+    <gripper name='grasping'>
+      <grasp_check>
+        <attach_steps>1</attach_steps>
+        <detach_steps>1</detach_steps>
+        <min_contact_count>2</min_contact_count>
+      </grasp_check>
+      <gripper_link>r_finger</gripper_link>
+      <gripper_link>l_finger</gripper_link>
+      <palm_link>end_effector</palm_link>
+    </gripper>
+
+    <plugin name='ros_control' filename='libgazebo_ros_control.so'/>
+
+      <robotSimType>ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+      <static>0</static>
+
+    <plugin name='joint_state_publisher' filename='libgazebo_ros_joint_state_publisher.so'>
+      <jointName>SA, SE, linkage_tr, WP, WY, WR</jointName>
+    </plugin>
+
+  </model>
+</sdf>

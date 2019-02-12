@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="husky_and_arm">
+
+    <self_collide>true</self_collide>
+
+    <include>
+      <uri>model://husky</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://my_gripper2</uri>
+      <pose>0 0 0.21 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://my_boxx</uri>
+      <pose>0.87 0 1.40 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://ur10</uri>
+      <name>ur_1</name>
+      <pose>0.87 0.4 1.485 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://kraftgripper</uri>
+      <pose>0.87 -0.4 1.48 0 0 -1.57</pose>
+    </include>
+
+    <joint name="arm_to_husky" type="fixed">
+      <parent>husky::base_link</parent>
+      <child>simple_gripper::chassis_2</child>
+    </joint>
+
+    <joint name="gripper_to_box" type="fixed">
+      <parent>simple_gripper::plataforma</parent>
+      <child>my_boxx::box_5</child>
+    </joint>
+
+    <joint name="ur_to_platform_1" type="fixed">
+      <parent>simple_gripper::plataforma_2</parent>
+      <child>ur_1::base</child>
+    </joint>
+
+    <joint name="kraftgripper_to_platform" type="fixed">
+      <parent>simple_gripper::plataforma_3</parent>
+      <child>kraftgripper::base_link</child>
+    </joint>
+
+    <!-- attach sensor to the gripper
+
+    <include>
+      <uri>model://hokuyo</uri>
+      <pose>0.22 0 0.3165 0 0 0</pose>
+    </include>
+
+    <joint name="hokuyo_joint" type="fixed">
+      <child>hokuyo::link</child>
+      <parent>husky::base_link</parent>
+    </joint>-->
+
+  </model>
+</sdf>
