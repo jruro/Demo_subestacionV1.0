@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="FGAG1003_VIGA_3">
+ <static>true</static>
+ <link name="mesh_link">
+	<inertial>
+            <mass>100.0</mass>
+ 	</inertial>
+        <visual name="visual">
+        <geometry>
+            <mesh><uri>model://FGAG1003_VIGA_3/meshes/FGAG1003_VIGA_3.stl</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>model://FGAG1003_VIGA_3/meshes/FGAG1003_VIGA_3.stl</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+      <joint name='anchor' type='fixed'>
+        <child>mesh_link</child>
+        <parent>world</parent>
+      </joint>
+  </model>
+</sdf>

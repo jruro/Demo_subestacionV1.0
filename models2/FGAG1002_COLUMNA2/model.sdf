@@ -1,0 +1,26 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="FGAG1002_COLUMNA2">
+ <static>false</static>
+ <link name="mesh_link">
+   <pose>0 0 -5.25 0 0 0</pose>
+	<inertial>
+            <mass>1000.0</mass>
+ 	</inertial>
+        <visual name="visual">
+        <geometry>
+            <mesh><uri>model://FGAG1002_COLUMNA2/meshes/FGAG1002_COLUMNA2.stl</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>model://FGAG1002_COLUMNA2/meshes/FGAG1002_COLUMNA2.stl</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+      <joint name='anchor' type='fixed'>
+        <child>mesh_link</child>
+        <parent>world</parent>
+      </joint>
+  </model>
+</sdf>

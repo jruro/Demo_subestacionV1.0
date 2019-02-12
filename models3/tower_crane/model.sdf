@@ -1,0 +1,160 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="tower_crane">
+
+    <static>false</static>
+
+    <link name="link1">
+      <inertial>
+        <mass>10.0</mass>
+        <inertia>
+          <ixx>1000000</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1000000</iyy>
+          <iyz>0</iyz>
+          <izz>1000000</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <!--<box>
+            <size>10 42.5 32</size>
+          </box>-->
+          <mesh>
+            <uri>model://tower_crane/meshes/model.dae</uri>
+            <scale>0.7 0.7 0.7</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://tower_crane/meshes/model.dae</uri>
+            <scale>0.7 0.7 0.7</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="link2">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>1000000</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1000000</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <pose>0 20 41 0 0 0</pose>
+        <geometry>
+          <!--<box>
+            <size>5 40 9</size>
+          </box>-->
+          <mesh>
+            <uri>model://tower_crane/meshes/model2.dae</uri>
+            <scale>0.7 0.7 0.7</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://tower_crane/meshes/model2.dae</uri>
+            <scale>0.7 0.7 0.7</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <include>
+      <uri>model://Cable</uri>
+      <pose>3.75 0 23.2 0 1.27 0</pose>
+    </include>
+
+    <include>
+      <uri>model://gancho</uri>
+      <pose>8.97 0 6.2 0 -0.5 0</pose>
+    </include>
+
+    <!--<link name="box">
+            <pose>4.9 28.28 1.4 0 0 0</pose>
+            <inertial>
+              <mass>1000.0</mass>
+              <inertia>
+                <ixx>1</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>10000</iyy>
+                <iyz>0</iyz>
+                <izz>1</izz>
+              </inertia>
+            </inertial>
+                <collision name='collision'>
+                  <geometry>
+                    <box>
+                      <size>0.2 0.2 0.2</size>
+                    </box>
+                  </geometry>
+                </collision>
+
+                <visual name='visual'>
+                  <geometry>
+                    <box>
+                      <size>0.2 0.2 0.2</size>
+                    </box>
+                  </geometry>
+                <material>
+                  <script>
+                    <uri>file://media/materials/scripts/gazebo.material</uri>
+                    <name>Gazebo/Grey</name>
+                  </script>
+                </material>
+                </visual>
+     </link>-->
+
+     <joint name='anchor' type='fixed'>
+       <child>link1</child>
+       <parent>world</parent>
+     </joint>
+
+     <joint name='cable_to_crane' type='fixed'>
+       <pose>3.75 0 23.2 0 1.57 0</pose>
+       <child>cable::link_1</child>
+       <parent>link2</parent>
+     </joint>
+
+     <joint name='hook_to_cable' type='fixed'>
+       <pose>3.75 0 5.2 0 1.57 0</pose>
+       <child>gancho::base_link</child>
+       <parent>cable::link_end</parent>
+     </joint>
+
+    <joint type="revolute" name="art_eje_z">
+      <pose>3.43 25.55 22.54 0 0 0</pose>
+      <parent>link1</parent>
+      <child>link2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <!--<joint name='art_eje_z' type='fixed'>
+      <pose>3.43 25.55 22.54 0 0 0</pose>
+      <child>link2</child>
+      <parent>link1</parent>
+    </joint>
+
+    <joint name="box_to_link1" type="fixed">
+      <pose>7 40.4 2 0 0 0</pose>
+      <parent>box</parent>
+      <child>link1</child>
+    </joint>-->
+
+  </model>
+</sdf>

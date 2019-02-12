@@ -1,0 +1,21 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="FGAG1002_NEXO">
+ <static>false</static>
+ <link name="mesh_link">
+	<inertial>
+            <mass>100.0</mass>
+ 	</inertial>
+        <visual name="visual">
+        <geometry>
+            <mesh><uri>model://FGAG1002_NEXO/meshes/FGAG1002_NEXO.stl</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>model://FGAG1002_NEXO/meshes/FGAG1002_NEXO.stl</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+  </model>
+</sdf>
