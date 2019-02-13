@@ -24,7 +24,7 @@
 
   </include>
 
-    <!--<param name="husky_description" command="$(find xacro)/xacro $(find husky_sdf_description)/HUSKY/rover.sdf"/>
+    <!--<param name="husky_description" command="$(find xacro)/xacro /home/juan/.gazebo/models/husky_and_arm/rover.sdf"/>
 
     <node name="husk_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model robot_husky -param husky_description -x 0 -y -70 -z 0.2 -R 0 -P 0 -Y 1.57"/>-->
 
